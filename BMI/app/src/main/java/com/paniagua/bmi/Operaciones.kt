@@ -20,31 +20,31 @@ class Operaciones {
     }
 
     // Método que obtiene la categoría a la que pertenece el IMC calculado
-    fun obtenerCategoría (imc: Double): String {
-        val categoría: String
+    fun obtenerCategoria (imc: Double): String {
+        val categoria: String
 
         if (imc < 16) {
-            categoría = "Bajo peso - Delgadez severa"
+            categoria = "Bajo peso - Delgadez severa"
         } else {
             if (imc in 16.0..16.99) {
-                categoría = "Bajo peso - Delgadez moderada"
+                categoria = "Bajo peso - Delgadez moderada"
             } else {
                 if (imc in 17.0..18.49) {
-                    categoría = "Bajo peso - Delgadez leve"
+                    categoria = "Bajo peso - Delgadez leve"
                 } else {
                     if (imc in 18.5..24.99) {
-                        categoría = "Normal"
+                        categoria = "Normal"
                     } else {
                         if (imc in 25.0..29.99) {
-                            categoría = "Sobrepeso - Preobesidad"
+                            categoria = "Sobrepeso - Preobesidad"
                         } else {
                             if (imc in 30.0..34.99) {
-                                categoría = "Obesidad leve"
+                                categoria = "Obesidad leve"
                             } else {
                                 if (imc in 35.0..39.99) {
-                                    categoría = "Obesidad media"
+                                    categoria = "Obesidad media"
                                 } else {
-                                    categoría = "Obesidad mórbida"
+                                    categoria = "Obesidad mórbida"
                                 }
                             }
                         }
@@ -53,7 +53,7 @@ class Operaciones {
             }
         }
 
-        return categoría
+        return categoria
     }
 
     // Método que asigna un color representativo a cada categoría

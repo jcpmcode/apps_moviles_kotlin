@@ -4,18 +4,18 @@
     <string name="estatura">Estatura</string>
     <string name="calcular">Calcular</string>
     <string name="calculadora_de_bmi">Calculadora de IMC</string>
-    <string name="métricoRadioButton">Métrico</string>
+    <string name="metricoRadioButton">Métrico</string>
     <string name="sistema_de_unidades">Sistema de unidades:</string>
-    <string name="inglés">Inglés</string>
+    <string name="ingles">Inglés</string>
     <string name="pesoKgTextView">Peso [kilogramos]</string>
     <string name="estaturaCmTextView">Estatura [centímetros]</string>
     <string name="pesoLbTextView">Peso [libras]</string>
     <string name="estaturaFtInchTextView">Estatura [pies y pulgadas]</string>
     <string name="resultados">Resultados</string>
-    <string name="registro_histórico">Registro Histórico</string>
-    <string name="categoría">Categoría:</string>
+    <string name="registro_historico">Registro Histórico</string>
+    <string name="categoria">Categoría:</string>
     <string name="imc_prime">IMC Prime:</string>
     <string name="imc">IMC [kg/m^2]:</string>
-    <string name="consultar_histórico">Consultar histórico</string>
+    <string name="consultar_historico">Consultar histórico</string>
 
 </resources>

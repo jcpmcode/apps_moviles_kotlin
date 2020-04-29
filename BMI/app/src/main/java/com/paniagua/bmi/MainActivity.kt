@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         // Método que configura los textView y los textEditView para solicitar de manera clara al usuario que ingrese datos en el sistema métrico
         // También valida si ya estaban llenos los campos con información en el otro sistema de unidades, si es así convierte los datos al sistema métrico
-        fun setMétrico() {
+        fun setMetrico() {
             val kg: Double
             val cm: Double
             val lib: Double? = pesoTextInputEditText.text.toString().toDoubleOrNull()
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         // Método que configura los textView y los textEditView para solicitar de manera clara al usuario que ingrese datos en el sistema inglés
         // También valida si ya estaban llenos los campos con información en el otro sistema de unidades, si es así convierte los datos al sistema inglés
-        fun setInglés() {
+        fun setIngles() {
             val lib: Double
             val ft: Int
             val inc: Int
@@ -86,16 +86,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Se selecciona el sistema métrico por default
-        setMétrico()
+        setMetrico()
 
         // listener para validar cual radioButton está seleccionado
         unidadesRadioGroup.setOnCheckedChangeListener { _, checkedId ->
             val radio: RadioButton = findViewById(checkedId)
 
-            if (radio.id == métricoRadioButton.id) {
-                setMétrico()
+            if (radio.id == metricoRadioButton.id) {
+                setMetrico()
             } else {
-                setInglés()
+                setIngles()
             }
         }
     }
@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
         var cm = 0.0
 
         // Si está seleccionado el sistema métrico se toman los valores directamente de los campos
-        if (radio.id == métricoRadioButton.id) {
+        if (radio.id == metricoRadioButton.id) {
             // Se valida que no estén vacíos los campos
             if ((pesoTextInputEditText.text.toString() != "") && (estaturaTextInputEditText1.text.toString() != "")) {
                 kg = pesoTextInputEditText.text.toString().toDouble()
@@ -142,8 +142,8 @@ class MainActivity : AppCompatActivity() {
         if (imc == 0.0 || imc.isNaN() || imc.isInfinite()) {
             flag = 2
         }
-        val categoría: String =
-            operaciones.obtenerCategoría(imc) // Se determina la categoría del imc
+        val categoria: String =
+            operaciones.obtenerCategoria(imc) // Se determina la categoría del imc
         val intensity: String =
             operaciones.obtenerColor(imc) // Se obtiene el color correspondiente a la categoría
         val prime: Double = operaciones.obtenerPrime(imc) // Se obtiene el imc prime
@@ -167,12 +167,10 @@ class MainActivity : AppCompatActivity() {
                 // Si la bandera es 1 entonces las validaciones fueron correctas
                 firstSuccess = 1 // Se completa con éxito el primer cálculo
                 historia += ("""
-                    |Peso: $kg kg
-                    |Estatura: $cm cm
-                    |IMC: $imc kg/m^2
-                    |Categoría: $categoría
-                    |IMC PRIME: $prime
                     |Fecha y hora: $timeStamp 
+                    |IMC: $imc kg/m^2
+                    |IMC PRIME: $prime
+                    |Categoría: $categoria
                     |
                     |
                     |
@@ -180,7 +178,7 @@ class MainActivity : AppCompatActivity() {
                 // Se Inicializa un intent que manda a llamar a la actividad de resultados y se le pasan los datos calculados
                 val intent = Intent(this, ResultadosActivity::class.java).apply {
                     putExtra("IMC", imc.toString())
-                    putExtra("CATEGORÍA", categoría)
+                    putExtra("CATEGORÍA", categoria)
                     putExtra("COLOR", intensity)
                     putExtra("PRIME", prime.toString())
                 }

@@ -124,20 +124,20 @@
                 android:textSize="24sp" />
 
             <RadioButton
-                android:id="@+id/métricoRadioButton"
+                android:id="@+id/metricoRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:checked="true"
-                android:text="@string/métricoRadioButton"
+                android:text="@string/metricoRadioButton"
                 android:textSize="14sp" />
 
             <RadioButton
-                android:id="@+id/InglésRadioButton"
+                android:id="@+id/InglesRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/inglés"
+                android:text="@string/ingles"
                 android:textSize="14sp" />
         </RadioGroup>
 
@@ -156,14 +156,14 @@
             app:layout_constraintTop_toBottomOf="@+id/unidadesRadioGroup" />
 
         <Button
-            android:id="@+id/consultarHistórico"
+            android:id="@+id/consultarHistorico"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:onClick="Registro"
-            android:text="@string/consultar_histórico"
+            android:text="@string/consultar_historico"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
