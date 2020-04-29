@@ -9,10 +9,6 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.time.Instant
-import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
-import kotlin.math.roundToInt
 
 var historia: String = "" //  propiedad que permite almacenar el registro histórico de los calculos de la aplicación.
 var firstSuccess = 0 // propiedad auxiliar que permite validar si ya se realizó un cálculo antes de llamar al histórico.
@@ -57,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         // Método que configura los textView y los textEditView para solicitar de manera clara al usuario que ingrese datos en el sistema inglés
         // También valida si ya estaban llenos los campos con información en el otro sistema de unidades, si es así convierte los datos al sistema inglés
         fun setIngles() {
-            val lib: Double
+            val lib: Int
             val ft: Int
             val inc: Int
             val kg: Double? = pesoTextInputEditText.text.toString().toDoubleOrNull()
@@ -73,11 +69,11 @@ class MainActivity : AppCompatActivity() {
                 View.VISIBLE // Se vuelve visible el campo de pulgadas
             // Se valida que no estén vacíos los campos para poder realizar la conversión correspondiente
             if (kg != null) {
-                lib = kg / 0.45359237 // Se convierten kilogramos a libras
+                lib = operaciones.kg2lib(kg) // Se convierten kilogramos a libras
                 pesoTextInputEditText.setText(lib.toString()) // Se muestra el resultado de la conversión
                 if (cm != null) {
-                    ft = ((cm / 2.54) / 12).toInt() // Se convierten centímetros a pies
-                    inc = ((cm / 2.54) % 12).roundToInt() // Se convierten centímetros a pulgadas
+                    ft = operaciones.cm2ft(cm) // Se convierten centímetros a pies
+                    inc = operaciones.cm2inc(cm) // Se convierten centímetros a pulgadas
                     // Se muestra el resultado de la conversión
                     estaturaTextInputEditText1.setText(ft.toString())
                     estaturaTextInputEditText2.setText(inc.toString())
@@ -148,8 +144,7 @@ class MainActivity : AppCompatActivity() {
         val intensity: String =
             operaciones.obtenerColor(imc) // Se obtiene el color correspondiente a la categoría
         val prime: Double = operaciones.obtenerPrime(imc) // Se obtiene el imc prime
-        val timeStamp = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneOffset.UTC)
-            .format(Instant.now()) // Se obtiene la fecha y hora en que las operaciones fueron realizadas
+        val horaLocal = operaciones.obtenerHoraLocal()
 
         // Si la bandera es 0 entonces quedó algún campo vacío
         if (flag == 0) {
@@ -168,7 +163,7 @@ class MainActivity : AppCompatActivity() {
                 // Si la bandera es 1 entonces las validaciones fueron correctas
                 firstSuccess = 1 // Se completa con éxito el primer cálculo
                 historia += ("""
-                    |Fecha y hora: $timeStamp 
+                    |Fecha y hora: $horaLocal 
                     |IMC: $imc kg/m^2
                     |IMC PRIME: $prime
                     |Categoría: $categoria

@@ -1,5 +1,9 @@
 package com.paniagua.bmi
 
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import kotlin.math.roundToInt
+
 class Operaciones {
 
     // Método que convierte libras a kilogramos
@@ -10,6 +14,28 @@ class Operaciones {
     // Método que convierte pies y pulgadas a centímetros
     fun ftinc2cm(ft: Double, inc: Double): Double {
         return ((ft * 0.3048 * 100) + (inc * 2.54))
+    }
+
+    // Método que convierte kilogramos a libras enteras
+    fun kg2lib(kg: Double): Int {
+        return (kg / 0.45359237).toInt()
+    }
+
+    // Método que convierte centímetros a pies enteros
+    fun cm2ft(cm: Double): Int {
+        return ((cm / 2.54) / 12).toInt()
+    }
+
+    // Método que convierte centímetros a pulgadas enteras
+    fun cm2inc(cm: Double): Int {
+        return ((cm / 2.54) % 12).roundToInt()
+    }
+
+    fun obtenerHoraLocal(): String {
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm")
+        val formatted = current.format(formatter)
+        return formatted
     }
 
     // Método que calcula el IMC dado el peso y la estatura en kilogramos
