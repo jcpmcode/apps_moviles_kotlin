@@ -100,7 +100,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Método que calcula el IMC, determina la categoría a la que pertenece, calcula el IMC Prime.
+    // Método que calcula el IMC, determina la categoría a la que pertenece, calcula el IMC Prime y finalmente manda a llamar a la vista de Resultados.
+    // Recibe como parámetro la vista para poder actuar en consecuencia de un evento activado en la vista principal
     // Valida que no esté vacío ningún campo y que los datos ingresados permitan realizar los calculos correctamente
     // Si se ingresaron los datos en el sistema Inglés los convierte al sistema métrico para realizar las operaciones
     fun Calcular(@Suppress("UNUSED_PARAMETER") view: View) {
@@ -188,6 +189,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Método que manda a llamar a la vista de Registro
+    // Recibe como parámetro la vista para poder actuar en consecuencia de un evento activado en la vista principal
     fun Registro(@Suppress("UNUSED_PARAMETER") view: View) {
 
         // Si ya se realizó un cálculo con éxito, entonces se puede consultar el histórico
