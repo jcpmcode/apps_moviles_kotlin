@@ -34,8 +34,7 @@ class Operaciones {
     fun obtenerHoraLocal(): String {
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm")
-        val formatted = current.format(formatter)
-        return formatted
+        return (current.format(formatter))
     }
 
     // Método que calcula el IMC dado el peso y la estatura en kilogramos
